@@ -46,6 +46,16 @@
 		font-family: 'Roboto', sans-serif;
 	}
 
+	@media (max-width: 600px) {
+		#ho {
+			display: none;
+		}
+
+		#hi a {
+			font-size: 40px;
+		}
+	}
+
 
 
 	.noselect {
@@ -91,18 +101,18 @@
 </style>
 
 
-<a id="gh" href="https://github.com/bijection/smoke.js">
+<a id="gh" href="https://www.afternic.com/domain/cannabisfog.com">
 	Get this Domain
 </a>
 <canvas id="canvas"></canvas>
 <div id='hi'>
-	<a href="https://github.com/bijection/smoke.js" class='noselect'>
+	<a href="https://www.afternic.com/domain/cannabisfog.com" class='noselect'>
 		cannabisfog.com
 	</a>
 
 </div>
 <div id='ho'>
-	<h4 href="https://github.com/bijection/smoke.js">
+	<h4>
 		Hover me
 	</h4>
 
@@ -134,18 +144,24 @@
 	canvas.height = innerHeight
 
 	var party = smokemachine(ctx, [500, 16, 54])
-	party.start() // start animating
-	//  party.setPreDrawCallback(function(dt){
-	//  	party.addSmoke(innerWidth/2, innerHeight, .5)
-	//  	canvas.width = innerWidth
-	//  	canvas.height = innerHeight
-	//  })
+	if (window.innerWidth < 650) { party.start() } // start animating
+
+	party.setPreDrawCallback(function (dt) {
+		party.addSmoke(innerWidth / 2, innerHeight, .5)
+		canvas.width = innerWidth
+		canvas.height = innerHeight
+	})
+
+
 
 	party.addsmoke(innerWidth / 1, innerHeight, 100)
 	onclick = e => {
 		console.log(e)
 		party.step()
 	}
+
+
+
 
 	onmousemove = function (e) {
 		var x = e.clientX
