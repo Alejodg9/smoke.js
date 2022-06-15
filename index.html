@@ -144,16 +144,16 @@
 	canvas.height = innerHeight
 
 	var party = smokemachine(ctx, [500, 16, 54])
-	if (window.innerWidth < 650) { party.start() } // start animating
-
-	party.setPreDrawCallback(function (dt) {
+	if (window.innerWidth < 650) { party.start()
+		party.setPreDrawCallback(function (dt) {
 		party.addSmoke(innerWidth / 2, innerHeight, .5)
 		canvas.width = innerWidth
 		canvas.height = innerHeight
 	})
+ }
 
 
-
+ if (window.innerWidth > 651) {party.start()}
 	party.addsmoke(innerWidth / 1, innerHeight, 100)
 	onclick = e => {
 		console.log(e)
